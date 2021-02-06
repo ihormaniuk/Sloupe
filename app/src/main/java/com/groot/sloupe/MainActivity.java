@@ -1,5 +1,8 @@
 package com.groot.sloupe;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -15,6 +18,8 @@ import com.groot.sloupe.Net.Jsoup.Teste.JsoupTeste;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,9 +51,25 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
+
+
 //                        numValue = Integer.parseInt(editText.getText().toString());
                         js.setValue(numValue);
                         js.setValueString(textView.getText().toString());
+
+                        try {
+                            new DownLoadImageTask(imageView).execute(js.getUrl());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+//                        try {
+//                            Picasso.with(MainActivity.this).load(js.getUrl())
+//                                    .placeholder(R.drawable.ic_user_icon)
+//                                    .into(imageView);
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
 
 //                        Log.v("TesteS : ",js.getImgUrl());
                         try {
@@ -69,13 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 Thread thread = new Thread(runnable);
                 thread.start();
 
-                try {
-                    Picasso.with(MainActivity.this).load(js.getUrl())
-                            .placeholder(R.drawable.ic_user_icon)
-                            .into(imageView);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
 
             }
 
@@ -101,6 +116,42 @@ public class MainActivity extends AppCompatActivity {
 //                };
 //            }
 //        });
+    }
+
+    private class DownLoadImageTask extends AsyncTask<String,Void, Bitmap> {
+        ImageView imageView;
+
+        public DownLoadImageTask(ImageView imageView){
+            this.imageView = imageView;
+        }
+
+        /*
+            doInBackground(Params... params)
+                Override this method to perform a computation on a background thread.
+         */
+        protected Bitmap doInBackground(String...urls){
+            String urlOfImage = urls[0];
+            Bitmap logo = null;
+            try{
+                InputStream is = new URL(urlOfImage).openStream();
+                /*
+                    decodeStream(InputStream is)
+                        Decode an input stream into a bitmap.
+                 */
+                logo = BitmapFactory.decodeStream(is);
+            }catch(Exception e){ // Catch the download exception
+                e.printStackTrace();
+            }
+            return logo;
+        }
+
+        /*
+            onPostExecute(Result result)
+                Runs on the UI thread after doInBackground(Params...).
+         */
+        protected void onPostExecute(Bitmap result){
+            imageView.setImageBitmap(result);
+        }
     }
 
 
