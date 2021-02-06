@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.groot.sloupe.Init.Init_Activity;
 
 public class MainActivity extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
-    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
