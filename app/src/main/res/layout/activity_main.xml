@@ -97,8 +97,8 @@
 
             <!--CardView number 1-->
             <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="163dp"
+                    android:layout_height="142dp"
                     android:id="@+id/cardView"
                     app:layout_columnWeight="1"
                     app:layout_rowWeight="1"
@@ -115,24 +115,26 @@
                         android:id="@+id/linerCard"
                         tools:ignore="UseCompoundDrawables">
                     <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:id="@+id/imageView3"
-                            android:src="@drawable/ic_user_icon" android:contentDescription="@string/todo"/>
-                    <TextView
-                            android:text="@string/textview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textView2"
-                            android:layout_marginTop="12dp"
-                    />
+                            android:src="@drawable/ic_user_icon"
+                            android:scaleType="fitCenter"
+                            android:contentDescription="@string/todo"/>
+                    <!--                    <TextView-->
+                    <!--                            android:text="@string/textview"-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:id="@+id/textView2"-->
+                    <!--                            android:layout_marginTop="12dp"-->
+                    <!--                    />-->
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 <!--            end cardView numer 1-->
 
 <!--            CardView number 2-->
             <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
+                    android:layout_width="163dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/cardView1"
                     app:layout_columnWeight="1"
