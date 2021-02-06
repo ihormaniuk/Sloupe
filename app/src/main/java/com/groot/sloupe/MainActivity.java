@@ -15,9 +15,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        recyclerView.findViewById(R.id.recyclerview);
-//        textView.findViewById(R.id.textview1);
-//        LinearLayoutManager linearSmoothScroller = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(linearSmoothScroller);
     }
 }
